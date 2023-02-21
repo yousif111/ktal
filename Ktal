@@ -1,0 +1,50 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("No More Life#3855", "DarkTheme")
+
+local Admin = Window:NewTab("Admin")
+local AdminSection = Admin:NewSection("Admin")
+
+
+AdminSection:NewButton("Shut Down Game", "ButtonInfo", function()
+        local args = {
+            [1] = "NoMoreLife#8866 Only And Fuck All https://discord.gg/njwUpRGjXr",
+            [2] = "All"
+        }
+    
+        game:GetService("ReplicatedStorage").RemoteEvents.ShutdownEvents.Request:FireServer(unpack(args))
+    end)
+
+AdminSection:NewButton("End Round", "ButtonInfo", function()
+    for i,v in pairs(game.Players:GetPlayers()) do
+        if v.Name ~= game:GetService('Players')[v.Name] then
+            game:GetService("ReplicatedStorage").RemoteEvents.EndRound.Request:FireServer()
+        end
+    end
+end)
+
+
+AdminSection:NewButton("Inf Money", "ButtonInfo", function()
+    game:GetService("RunService").RenderStepped:Connect(function()
+        local amount = 9999999999999;
+        local Kode = "Code10";
+        local mode = "Code11";
+        local Zode = "Code1";
+        local Rode = "Code12";
+        local meesh = 2.3;
+        local main = "OT";
+        local remote = game:GetService("ReplicatedStorage").EnterCode;
+        remote:FireServer(amount, code, meesh, main);
+    end)
+end)
+AdminSection:NewButton("Auto Reward Chest", "ButtonInfo", function()
+    if state then
+        getgenv().AutoRewardChest = true
+        repeat wait()
+        if getgenv().AutoRewardChest == true then
+        game:GetService("ReplicatedStorage").RemoteEvents.RewardEvents.Claim:FireServer()
+    end
+until getgenv().AutoRewardChest == false
+    else
+        getgenv().AutoRewardChest = false
+    end
+end)
